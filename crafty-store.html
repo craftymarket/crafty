@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Crafty — украшения и декор ручной работы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d1830;--mut:#7a7590;--bg:#f4f2f8;--ac:#7a2cf0;--ac2:#a14bff;--pk:#ff2d6f;--line:#e6e2ef;--ok:#17a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;max-width:100%}
+html.lk{overflow:hidden}
+body{font:500 15px/1.4 Manrope,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent;padding-bottom:env(safe-area-inset-bottom)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+img{display:block;max-width:100%}
+svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+.top{background:var(--ink);color:#d9d3ee;text-align:center;font-size:12.5px;padding:7px 12px}
+header{background:#fff;position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.hr{display:flex;align-items:center;gap:14px;height:64px}
+.logo{font-weight:800;font-size:27px;letter-spacing:-1px;color:var(--ac);white-space:nowrap}
+.logo i{color:var(--pk);font-style:normal}
+.cb{display:flex;align-items:center;gap:8px;background:var(--ac);color:#fff;padding:0 16px;height:42px;border-radius:12px;font-weight:700;white-space:nowrap}
+.sr{flex:1;position:relative;min-width:0}
+.sr input{width:100%;height:42px;border:2px solid #efe9fb;background:#f4f1fa;border-radius:12px;padding:0 14px 0 42px;outline:0}
+.sr input:focus{border-color:var(--ac);background:#fff}
+.sr svg{position:absolute;left:12px;top:9px;color:var(--mut);width:22px;height:22px}
+.ac{display:flex;gap:4px}
+.ab{position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:10px;color:var(--ink)}
+.ab:hover{background:#f4f1fa}
+.ab b{position:absolute;top:-1px;right:4px;min-width:18px;height:18px;border-radius:9px;background:var(--pk);color:#fff;font-size:11px;display:none;align-items:center;justify-content:center;padding:0 5px}
+.ab b.on{display:flex}
+.hero{position:relative;height:300px;border-radius:22px;overflow:hidden;margin-top:18px}
+.sl{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 48px;color:#fff;opacity:0;pointer-events:none;transition:opacity .6s}
+.sl.on{opacity:1;pointer-events:auto}
+.sl h2{font-size:38px;line-height:1.08;letter-spacing:-1px;max-width:480px}
+.sl p{margin:12px 0 20px;opacity:.85;max-width:420px}
+.sl .pic{width:240px;height:240px;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(0,0,0,.28);transform:rotate(3deg);flex:none;cursor:pointer}
+.sl .pic img{width:100%;height:100%;object-fit:cover}
+.dots{position:absolute;bottom:14px;left:48px;display:flex;gap:7px}
+.dots button{width:8px;height:8px;border-radius:4px;background:rgba(255,255,255,.45);transition:.3s}
+.dots button.on{width:26px;background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--ac);color:#fff;font-weight:700;border-radius:12px;padding:0 18px;height:42px;transition:background .2s}
+.btn:hover{background:#6420d1}
+.btn.w{background:#fff;color:var(--ac)}
+.btn.w:hover{background:#f0e8ff}
+.btn.sec{background:#efe7ff;color:var(--ac)}
+.btn.sec:hover{background:#e3d6ff}
+.btn.big{width:100%;height:50px;font-size:16px}
+.btn.pk{background:var(--pk)}
+.btn:disabled{background:#ddd;color:#999;cursor:default}
+.trust{display:flex;gap:10px;margin:14px 0 6px;overflow-x:auto;scrollbar-width:none}
+.trust div{flex:1 0 auto;background:#fff;border-radius:14px;padding:12px 18px;font-size:13px;color:var(--mut);white-space:nowrap}
+.trust b{display:block;font-size:19px;color:var(--ink)}
+h2.st{font-size:26px;letter-spacing:-.5px;margin:26px 0 12px}
+.pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.pill{flex:none;background:#fff;border-radius:20px;padding:9px 16px;font-weight:600;font-size:14px;white-space:nowrap}
+.pill.on{background:var(--ac);color:#fff}
+.tb{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}
+.tb select,.tb input[type=number]{height:38px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:0 10px;outline:0}
+.tb input[type=number]{width:96px}
+.tb label{display:flex;align-items:center;gap:6px;font-size:14px}
+.tb .cnt{margin-left:auto;color:var(--mut);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;min-height:200px}
+.card{background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 10px 30px rgba(60,30,120,.14);transform:translateY(-3px)}
+.ph{position:relative;aspect-ratio:1/1.12;background:#eee;cursor:pointer;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.dis{position:absolute;left:8px;bottom:8px;background:var(--pk);color:#fff;font-weight:800;font-size:13px;padding:3px 8px;border-radius:8px}
+.bd{position:absolute;left:8px;top:8px;background:var(--ac);color:#fff;font-weight:700;font-size:12px;padding:3px 8px;border-radius:8px}
+.fav{position:absolute;right:8px;top:8px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);color:#b9b3c9;font-size:18px;display:flex;align-items:center;justify-content:center}
+.fav.on{color:var(--pk)}
+.inf{padding:12px 12px 14px;display:flex;flex-direction:column;gap:5px;flex:1}
+.pr{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.pr b{font-size:20px;font-weight:800}
+.pr s{color:var(--mut);font-size:13px}
+.tt{font-size:13.5px;color:#4a4560;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer;min-height:38px}
+.rt{font-size:12.5px;color:var(--mut)}
+.rt::first-letter{color:#f5a300}
+.buy{margin-top:auto;padding-top:6px}
+.buy .btn{width:100%}
+.stp{display:flex;align-items:center;justify-content:space-between;background:#efe7ff;border-radius:12px;height:42px;padding:0 4px}
+.stp button{width:40px;height:34px;font-size:22px;font-weight:700;color:var(--ac);border-radius:9px}
+.stp button:hover{background:#fff}
+.stp button:disabled{opacity:.35;cursor:default}
+.stp span{font-weight:700}
+.stp small{display:block;font-size:10.5px;color:var(--mut);font-weight:600;text-align:center;line-height:1}
+.empty{grid-column:1/-1;text-align:center;padding:50px 10px;color:var(--mut)}
+.empty b{display:block;color:var(--ink);font-size:18px;margin-bottom:8px}
+footer{background:var(--ink);color:#b9b3d0;margin-top:44px;padding:36px 0 90px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+footer h4{color:#fff;margin-bottom:10px}
+footer a,footer button.l{display:block;color:#b9b3d0;margin:6px 0;text-decoration:none;text-align:left}
+footer a:hover,footer button.l:hover{color:#fff}
+.bn{display:none}
+.ov{position:fixed;inset:0;background:rgba(20,12,40,.55);z-index:60;display:none;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.sheet{position:relative;background:#fff;border-radius:22px;width:100%;max-width:520px;max-height:calc(100dvh - 32px);overflow-y:auto;overflow-x:hidden;padding:26px;animation:up .25s}
+.sheet.pw{max-width:980px}
+.sheet.pnl{max-width:900px}
+.sheet h3{font-size:22px;margin-bottom:14px;padding-right:36px}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+.x{position:absolute;top:12px;right:14px;width:36px;height:36px;border-radius:50%;background:#f4f1fa;font-size:22px;z-index:2}
+.pv{display:grid;grid-template-columns:1.1fr 1fr;gap:26px}
+.big{aspect-ratio:1;background:#eee;border-radius:16px;overflow:hidden}
+.big img{width:100%;height:100%;object-fit:cover}
+.th{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
+.th img{width:62px;height:62px;flex:none;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer;opacity:.7}
+.th img.on{border-color:var(--ac);opacity:1}
+.det .pr b{font-size:30px}
+.det h3{font-size:20px;line-height:1.25;margin:0 0 8px;padding:0 36px 0 0}
+.det table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+.det td{padding:7px 0;border-bottom:1px dashed var(--line);vertical-align:top}
+.det td:first-child{color:var(--mut);width:42%}
+.det .row{display:flex;gap:10px;margin-top:14px}
+.det .row>*{flex:1}
+.stk{font-size:13px;margin-top:8px;color:var(--ok);font-weight:600}
+.stk.lo{color:var(--pk)}
+.drawer{position:absolute;right:0;top:0;bottom:0;width:430px;max-width:100%;background:#fff;display:flex;flex-direction:column;animation:rt .25s}
+@keyframes rt{from{transform:translateX(40px);opacity:0}}
+.dro{padding:0;justify-content:flex-end;align-items:stretch}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dh h3{font-size:22px}
+.db{flex:1;overflow-y:auto;padding:6px 20px}
+.df{padding:16px 20px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.df .t{display:flex;justify-content:space-between;font-size:18px;font-weight:800;margin-bottom:12px}
+.ci{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ci img{width:76px;height:84px;object-fit:cover;border-radius:12px;background:#eee}
+.ci .tt{min-height:0;-webkit-line-clamp:2;margin-bottom:4px}
+.ci .r{display:flex;align-items:center;gap:10px;margin-top:6px}
+.ci .stp{width:116px;height:36px}
+.ci .stp button{height:30px;width:34px}
+.ci .rm{color:var(--mut);font-size:13px;margin-left:auto}
+.fm{display:flex;flex-direction:column;gap:12px}
+.fm label,.lbl{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mut);font-weight:600}
+.fm input,.fm select,.fm textarea{border:1.5px solid var(--line);border-radius:12px;padding:11px 13px;outline:0;background:#fff;color:var(--ink);width:100%;font-size:16px}
+.fm input:focus,.fm select:focus,.fm textarea:focus{border-color:var(--ac)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hint{font-size:12.5px;color:var(--mut)}
+.sum{background:#f4f1fa;border-radius:14px;padding:12px 14px;font-size:14px;display:flex;justify-content:space-between}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none}
+.row2{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.row2 img{width:54px;height:54px;border-radius:10px;object-fit:cover;flex:none;background:#eee}
+.row2 .g{flex:1;min-width:0;font-size:14px}
+.row2 .g span{display:block;color:var(--mut);font-size:12.5px}
+.row2 .g b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sm{height:34px;padding:0 12px;font-size:13px;border-radius:9px;background:#efe7ff;color:var(--ac);font-weight:700}
+.sm.d{background:#ffe6ee;color:var(--pk)}
+.ord{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.ord header{all:unset;display:flex;justify-content:space-between;gap:8px;font-weight:700;margin-bottom:6px}
+.pim{display:flex;gap:8px;flex-wrap:wrap}
+.pim div{position:relative}
+.pim img{width:70px;height:70px;border-radius:10px;object-fit:cover}
+.pim button{position:absolute;top:-6px;right:-6px;width:22px;height:22px;border-radius:50%;background:var(--pk);color:#fff;font-size:14px}
+.ok{text-align:center;padding:10px 0}
+.ok .c{width:70px;height:70px;border-radius:50%;background:#e4f7ec;color:var(--ok);font-size:38px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:99;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+@media(max-width:860px){
+.cb span,.ab span{display:none}
+.hr{height:58px;gap:10px}
+.logo{font-size:24px}
+.sl{padding:0 22px}.sl h2{font-size:25px}.sl .pic{width:120px;height:120px;border-radius:16px}.dots{left:22px}
+.hero{height:230px;border-radius:18px}
+.pv{grid-template-columns:1fr}
+footer .wrap{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+.wrap{padding:0 10px}
+.hr{flex-wrap:wrap;height:auto;padding:8px 0;gap:8px}
+.sr{order:3;flex-basis:100%}
+.cb{display:none}
+.ac{margin-left:auto}
+.ab.hd{display:none}
+.sl p{display:none}.sl h2{font-size:21px}.sl .pic{width:104px;height:104px}
+.hero{height:190px;margin-top:10px}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pr b{font-size:17px}
+.tt{font-size:12.5px}
+.ov{padding:0;align-items:flex-end}
+.sheet{border-radius:22px 22px 0 0;max-height:94dvh;padding:20px 16px calc(20px + env(safe-area-inset-bottom));max-width:100%}
+.dro{align-items:stretch}
+.drawer{width:100%}
+.two{grid-template-columns:1fr}
+.det .row{flex-direction:column}
+.tb .cnt{margin-left:0;width:100%}
+.bn{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:40;padding-bottom:env(safe-area-inset-bottom);justify-content:space-around}
+.bn .ab{flex:1;padding:8px 2px;border-radius:0}
+.bn .ab b{right:calc(50% - 22px)}
+footer{padding-bottom:100px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top">Ручная работа из России · Тестовая версия магазина</div>
+<header>
+<div class="wrap hr">
+<a class="logo" href="#" data-act="home" style="text-decoration:none">crafty<i>.</i></a>
+<button class="cb" data-act="gocat"><svg class="i" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Каталог</span></button>
+<div class="sr"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Поиск по магазину" aria-label="Поиск"></div>
+<div class="ac">
+<button class="ab hd" data-act="user"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg><span id="un">Войти</span></button>
+<button class="ab hd" data-act="help"><svg class="i" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg><span>Помощь</span></button>
+<button class="ab" data-act="favs"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7.500-4.600-9.500-9.300C1.100 8.300 3 5 6.300 5c2 0 3.700 1.100 4.700 2.700h2C14 6.100 15.700 5 17.700 5 21 5 22.900 8.300 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg><span>Избранное</span><b id="fc"></b></button>
+<button class="ab" data-act="cart"><svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg><span>Корзина</span><b id="cc"></b></button>
+</div>
+</div>
+</header>
+<main class="wrap">
+<section class="hero" id="hero" aria-label="Подборки"></section>
+<div class="trust"><div><b>5,0 ★</b>рейтинг товаров</div><div><b>817</b>отзывов на Ozon</div><div><b>2296</b>заказов</div><div><b>3 года</b>работаем с Ozon</div></div>
+<h2 class="st" id="catalog">Каталог</h2>
+<div class="pills" id="pills"></div>
+<div class="tb">
+<select id="sort" aria-label="Сортировка"><option value="pop">Популярные</option><option value="asc">Сначала дешевле</option><option value="desc">Сначала дороже</option><option value="dis">По скидке</option></select>
+<input id="mn" type="number" min="0" placeholder="Цена от"><input id="mx" type="number" min="0" placeholder="Цена до">
+<label><input id="sk" type="checkbox"> В наличии</label>
+<span class="cnt" id="cnt"></span>
+</div>
+<div class="grid" id="grid"></div>
+</main>
+<footer>
+<div class="wrap">
+<div><h4>crafty.</h4><p>Украшения и декор ручной работы из полимерной глины и дерева. Каждая вещь делается вручную в России.</p><p style="margin-top:10px;font-size:12.5px">ИП Егоров В. А. · ОГРНИП 316774600177092</p></div>
+<div><h4>Покупателям</h4><button class="l" data-act="help">Поддержка</button><button class="l" data-act="user">Личный кабинет</button><button class="l" data-act="cart">Корзина</button></div>
+<div><h4>Мы на маркетплейсах</h4><a href="https://www.ozon.ru/seller/crafty/" target="_blank" rel="noopener">Crafty на Ozon</a><a href="https://www.wildberries.ru/seller/1397635" target="_blank" rel="noopener">Crafty на Wildberries</a><button class="l" data-act="seller" style="margin-top:18px;font-size:12.5px;opacity:.7">Для продавца</button></div>
+</div>
+</footer>
+<nav class="bn" aria-label="Меню">
+<button class="ab" data-act="home"><svg class="i" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></svg><span style="display:block">Главная</span></button>
+<button class="ab" data-act="favs"><svg class="i" viewBox="0 0 24 24"><path d="M12 21s-7.500-4.600-9.500-9.300C1.100 8.300 3 5 6.300 5c2 0 3.700 1.100 4.700 2.700h2C14 6.100 15.700 5 17.700 5 21 5 22.900 8.300 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg><span style="display:block">Избранное</span><b class="fc2"></b></button>
+<button class="ab" data-act="cart"><svg class="i" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8zM9 8V6a3 3 0 016 0v2"/></svg><span style="display:block">Корзина</span><b class="cc2"></b></button>
+<button class="ab" data-act="help"><svg class="i" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg><span style="display:block">Помощь</span></button>
+<button class="ab" data-act="user"><svg class="i" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.500-6 8-6s8 2 8 6"/></svg><span style="display:block">Профиль</span></button>
+</nav>
+<div class="ov" id="ov"><div class="sheet" id="sh"></div></div>
+<div class="ov dro" id="dro"><aside class="drawer" id="dr"></aside></div>
+<div id="toast" role="status"></div>
+<script>
+const LS=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
+const SV=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){toast('Не удалось сохранить: закончилось место. Уберите лишние фото.');return false}};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>Number(n).toLocaleString('ru-RU')+' ₽';
+const OZ='https://ir-20.ozone.ru/s3/multimedia-';
+function U(a,w){if(/^(data:|http)/.test(a))return a;const p=a.split('/');return OZ+p[0]+'/c'+(w||600)+'/'+p[1]+'.jpg'}
+function imgErr(i){i.onerror=null;i.src='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><rect width="10" height="10" fill="#ece8f5"/><text x="5" y="5.800" font-size="1.800" text-anchor="middle" fill="#a69fc0" font-family="sans-serif">crafty</text></svg>')}
+const S=[
+[1,'Подвески','Подвеска прямоугольная с объёмным лицом «Серебристый профиль»',486,850,5,60,18,'1-0/9953380008,1-b/9953379947,1-h/9953380421,1-t/9953380145,1-2/9953380370','Материал:Полимерная глина|Цвет:Серый|Вставка:Без вставки|Страна:Россия','Хит'],
+[3,'Подвески','Подвеска прямоугольная с объёмным лицом «Чёрный профиль»',456,850,5,60,5,'1-d/11789880385,1-2/11789879762,1-t/11789880113,1-z/11789879831','Материал:Полимерная глина|Цвет:Чёрный|Стиль:Авангардный|Страна:Россия',''],
+[9,'Подвески','Подвеска прямоугольная с объёмным лицом «Перламутровый профиль»',440,850,5,60,6,'1-n/9953285963,1-c/9953285376,1-c/9953285484,1-d/9953285449,1-5/9953285513','Материал:Полимерная глина|Цвет:Перламутровый|Вставка:Без вставки|Страна:Россия',''],
+[10,'Подвески','Подвеска прямоугольная с объёмным лицом «Белый профиль»',464,850,5,60,7,'1-2/11789831738,1-e/11789832002,1-u/11789832018','Материал:Полимерная глина|Цвет:Белый|Стиль:Авангардный|Страна:Россия',''],
+[4,'Подвески','Кулон-подвеска «Лисичка» из красного дерева, 4×3 см',349,950,5,434,152,'1-v/15336310207,1-9/15336320409,1-n/7003744763,1-o/7003744764,1-q/7003744766,1-s/7003744768,5/6813790205,2/6842245214','Материал:Дерево|Цвет:Карамельный|Размер:4×3 см|Страна:Россия','Бестселлер'],
+[6,'Подвески','Кулон-подвеска на шею «Лисичка» из красного дерева, 4×3 см',498,950,5,434,22,'1-8/15335891828,1-9/15335892585,1-y/7036743994,1-9/15335891829,1-x/15335891889,1-6/7036744002,1-7/6950993011','Материал:Дерево|Цвет:Коричневый/бежевый|Размер:4×3 см|Страна:Россия',''],
+[5,'Подвески','Подвеска-кулон «Кот» деревянный из красного дерева, 3×2,5 см',181,650,5,100,19,'1-9/9690863445,1-3/9690864663,1-7/6950993011,1-t/9690864473','Материал:Палисандр|Вставка:Стекло|Цвет:Коричневый/зелёный|Размер:3×2,5 см|Страна:Россия',''],
+[14,'Подвески','Подвеска (кулон) «Маска» деревянная из дуба, вставка из бронзы',1334,2000,4.9,167,9,'0/6672367260,5/6672367265,q/6672566654,d/6672367201,3/6672367263,h/6672367205,i/6672566646,k/6672566648','Материал:Дерево, бронза|Тип вставки:Металл|Стиль:Авангардный|Страна:Россия','Эксклюзив'],
+[2,'Серьги','Серьги ручной работы «Сердце» чёрное',316,850,0,0,2,'1-c/11659535832,1-7/11659536079,1-c/11659536228,1-y/11659535818,1-m/11659537066','Материал:Полимерная глина, бижутерный сплав|Цвет:Чёрный|Вид серёг:Подвески|Страна:Россия','Осталось 2'],
+[7,'Серьги','Серьги ручной работы «Сердце» красное',417,850,0,0,5,'1-t/11659535849,1-0/11659536756,1-o/11659536708,1-e/11659536878','Материал:Полимерная глина, бижутерный сплав|Цвет:Алый|Вид серёг:Подвески|Страна:Россия',''],
+[8,'Серьги','Серьги-гвоздики квадратные «Шепот губ»',253,850,4.9,51,11,'1-z/11659326515,1-9/11659325949,1-l/11659326789,1-n/11659326755,1-5/11659326521,1-f/11659325307','Материал:Бижутерный сплав, полимерная глина|Цвет:Белый иней|Замок:Гвоздик|Страна:Россия',''],
+[12,'Серьги','Серьги-гвоздики квадратные «Шепот губ» серебристые',503,0,4.9,51,10,'1-9/11737891413,1-k/11737938980,1-b/11737891415,1-z/11737891403,1-4/11737891408,1-1/11737891405','Материал:Полимерная глина|Цвет:Белый иней|Замок:Гвоздик|Страна:Россия',''],
+[11,'Кольца','Стильное женское бижутерное кольцо «Шепот губ»',425,0,0,0,10,'1-0/20730320280,1-o/20730322068,1-0/20730326004,1-l/20730324549,1-g/20730317740','Материал:Бижутерный сплав, полимерная глина|Размер:20|Стиль:Авангардный|Страна:Россия','Новинка'],
+[15,'Посуда','Деревянная тарелка-менажница «Футбольный мяч» ручной работы',1066,3500,5,3,10,'1-u/11712212202,1-y/11712213646,1-p/11712211621,1-0/11712213108,1-0/11712214620','Объём:250 мл|Диаметр:15 см|Мытьё:Нельзя в посудомоечной машине',''],
+[13,'Ручки для мебели','Деревянная ручка-кнопка «Кот в очках» для мебели',748,0,5,2,10,'1-i/14860589166,1-n/14860589495,1-b/14860589195,1-0/14860589148,1-u/14860589070,1-0/14860589328','Цвет:Бежевый, коричневый|Длина:2,8 см|Размер:40 мм|Гарантия:14 дней',''],
+[16,'Ручки для мебели','Деревянная ручка-кнопка «Лапка» для мебели',749,0,5,2,10,'1-y/20102306290,1-s/20102253472,1-f/20102253603,1-q/20102254190,1-a/20102254066,1-1/20102254489,1-b/20102253491','Цвет:Бежевый, горчичный|Длина:4 см|Размер:40 мм|Гарантия:14 дней','Новинка']
+];
+const seed=()=>S.map(r=>({id:r[0],cat:r[1],title:r[2],price:r[3],old:r[4],rate:r[5],rev:r[6],stock:r[7],imgs:r[8].split(','),specs:r[9],desc:'',badge:r[10]}));
+let P=LS('crafty_products',null)||seed();
+let cart=LS('crafty_cart',[]).filter(c=>P.some(p=>p.id==c.id));
+let fav=LS('crafty_fav',[]);
+let orders=LS('crafty_orders',[]);
+let msgs=LS('crafty_msgs',[]);
+let user=LS('crafty_user',null);
+let cfg=Object.assign({phone:'+7 (900) 000-00-00',email:'hello@crafty.example',tg:'crafty_support',pass:'crafty2026'},LS('crafty_cfg',{}));
+let F={cat:'Все',q:'',sort:'pop',min:0,max:0,stock:false,fav:false};
+let seller=false,ptab='p',fImgs=[],fId=null,cur=null;
+const cats=()=>[...new Set(P.map(p=>p.cat))];
+const qty=id=>{const c=cart.find(x=>x.id==id);return c?c.q:0};
+const cnt=()=>cart.reduce((a,c)=>a+c.q,0);
+const total=()=>cart.reduce((a,c)=>{const p=P.find(x=>x.id==c.id);return a+(p?p.price*c.q:0)},0);
+const disc=p=>p.old>p.price?Math.round(100-p.price/p.old*100):0;
+function setQ(id,q){const p=P.find(x=>x.id==id);if(!p)return;q=Math.max(0,Math.min(q,p.stock));const i=cart.findIndex(c=>c.id==id);if(i<0){if(q)cart.push({id:p.id,q})}else if(q)cart[i].q=q;else cart.splice(i,1);SV('crafty_cart',cart);refresh()}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),2600)}
+function buyBtn(p){if(p.stock<=0)return'<button class="btn" disabled>Нет в наличии</button>';const q=qty(p.id);if(!q)return`<button class="btn" data-act="add" data-id="${p.id}">В корзину</button>`;return`<div class="stp"><button data-act="dec" data-id="${p.id}" aria-label="Меньше">−</button><div><span>${q}</span><small>в корзине</small></div><button data-act="inc" data-id="${p.id}" aria-label="Больше" ${q>=p.stock?'disabled':''}>+</button></div>`}
+function card(p){const d=disc(p);return`<article class="card"><div class="ph" data-act="open" data-id="${p.id}"><img loading="lazy" referrerpolicy="no-referrer" src="${esc(U(p.imgs[0],600))}" alt="${esc(p.title)}" onerror="imgErr(this)">${d?`<span class="dis">−${d}%</span>`:''}${p.badge?`<span class="bd">${esc(p.badge)}</span>`:''}<button class="fav ${fav.includes(p.id)?'on':''}" data-act="fav" data-id="${p.id}" aria-label="В избранное">♥</button></div><div class="inf"><div class="pr"><b>${money(p.price)}</b>${d?`<s>${money(p.old)}</s>`:''}</div><div class="tt" data-act="open" data-id="${p.id}">${esc(p.title)}</div><div class="rt">${p.rev?`★ ${p.rate} · ${p.rev} отзывов`:'Новый товар'}</div><div class="buy" data-buy="${p.id}">${buyBtn(p)}</div></div></article>`}
+function list(){const q=F.q.toLowerCase();const a=P.filter(p=>(F.cat=='Все'||p.cat==F.cat)&&(!q||(p.title+' '+p.cat+' '+p.specs).toLowerCase().includes(q))&&(!F.min||p.price>=F.min)&&(!F.max||p.price<=F.max)&&(!F.stock||p.stock>0)&&(!F.fav||fav.includes(p.id)));const d=p=>p.old>p.price?p.price/p.old:1;a.sort(F.sort=='asc'?(x,y)=>x.price-y.price:F.sort=='desc'?(x,y)=>y.price-x.price:F.sort=='dis'?(x,y)=>d(x)-d(y):(x,y)=>y.rev-x.rev);return a}
+function renderGrid(){const a=list();$('#grid').innerHTML=a.length?a.map(card).join(''):`<div class="empty"><b>${F.fav?'В избранном пока пусто':'Ничего не нашли'}</b>${F.fav?'Нажмите ♥ на товаре, чтобы сохранить его':'Попробуйте изменить запрос или фильтры'}<br><br><button class="btn sec" data-act="reset">Сбросить фильтры</button></div>`;$('#cnt').textContent=a.length+' '+(a.length%10==1&&a.length%100!=11?'товар':a.length%10>1&&a.length%10<5&&(a.length%100<10||a.length>=20)?'товара':'товаров');$('#pills').innerHTML=['Все',...cats()].map(c=>`<button class="pill ${F.cat==c&&!F.fav?'on':''}" data-act="cat" data-c="${esc(c)}">${esc(c)}</button>`).join('')+`<button class="pill ${F.fav?'on':''}" data-act="favs">♥ Избранное</button>`}
+function badges(){const n=cnt(),f=fav.length;[['#cc',n],['.cc2',n],['#fc',f],['.fc2',f]].forEach(([s,v])=>document.querySelectorAll(s).forEach(e=>{e.textContent=v;e.classList.toggle('on',v>0)}));$('#un').textContent=user?user.name.split(' ')[0]:'Войти'}
+function refresh(){badges();document.querySelectorAll('.buy[data-buy]').forEach(e=>{const p=P.find(x=>x.id==e.dataset.buy);if(p)e.innerHTML=buyBtn(p)});if($('#dro').classList.contains('on'))drawer()}
+function renderAll(){renderGrid();badges();hero()}
+let hi=0,ht;const HS=[{id:1,t:'Профили из полимерной глины',s:'Объёмные подвески ручной работы',c:'Подвески',bg:'linear-gradient(120deg,#4b1fa8,#9b3dff)'},{id:4,t:'Лисички из красного дерева',s:'Тёплые кулоны на каждый день',c:'Подвески',bg:'linear-gradient(120deg,#8a2a4f,#ff4f81)'},{id:15,t:'Дерево для дома',s:'Менажницы и ручки-кнопки на мебель',c:'Посуда',bg:'linear-gradient(120deg,#1d1830,#5b3aa8)'}];
+function hero(){const sl=HS.filter(s=>P.some(p=>p.id==s.id));clearInterval(ht);if(!sl.length){$('#hero').style.display='none';return}$('#hero').style.display='';hi=0;$('#hero').innerHTML=sl.map((s,i)=>{const p=P.find(x=>x.id==s.id);return`<div class="sl ${i?'':'on'}" style="background:${s.bg}"><div><h2>${s.t}</h2><p>${s.s}</p><button class="btn w" data-act="gocat" data-c="${s.c}">Смотреть</button></div><div class="pic" data-act="open" data-id="${p.id}"><img referrerpolicy="no-referrer" src="${esc(U(p.imgs[0],600))}" alt="" onerror="imgErr(this)"></div></div>`}).join('')+`<div class="dots">${sl.map((s,i)=>`<button class="${i?'':'on'}" data-act="slide" data-i="${i}" aria-label="Слайд ${i+1}"></button>`).join('')}</div>`;if(sl.length>1&&!matchMedia('(prefers-reduced-motion:reduce)').matches)ht=setInterval(()=>slide((hi+1)%sl.length),5500)}
+function slide(i){hi=i;document.querySelectorAll('.sl').forEach((e,k)=>e.classList.toggle('on',k==i));document.querySelectorAll('.dots button').forEach((e,k)=>e.classList.toggle('on',k==i))}
+function lock(){document.documentElement.classList.toggle('lk',$('#ov').classList.contains('on')||$('#dro').classList.contains('on'))}
+function openM(h,w){$('#sh').className='sheet '+(w||'');$('#sh').innerHTML='<button class="x" data-act="close" aria-label="Закрыть">×</button>'+h;$('#sh').scrollTop=0;$('#ov').classList.add('on');lock()}
+function closeM(){$('#ov').classList.remove('on');lock()}
+function openDr(){drawer();$('#dro').classList.add('on');lock()}
+function closeDr(){$('#dro').classList.remove('on');lock()}
+function drawer(){const it=cart.map(c=>({p:P.find(x=>x.id==c.id),q:c.q})).filter(x=>x.p);$('#dr').innerHTML=`<div class="dh"><h3>Корзина${it.length?' · '+cnt():''}</h3><button class="x" style="position:static" data-act="closedr" aria-label="Закрыть">×</button></div><div class="db">${it.length?it.map(({p,q})=>`<div class="ci"><img referrerpolicy="no-referrer" src="${esc(U(p.imgs[0],200))}" alt="" onerror="imgErr(this)"><div><div class="tt" data-act="open" data-id="${p.id}">${esc(p.title)}</div><b>${money(p.price*q)}</b>${q>1?` <span class="hint">${money(p.price)} за шт.</span>`:''}<div class="r"><div class="stp"><button data-act="dec" data-id="${p.id}" aria-label="Меньше">−</button><span>${q}</span><button data-act="inc" data-id="${p.id}" aria-label="Больше" ${q>=p.stock?'disabled':''}>+</button></div><button class="rm" data-act="del" data-id="${p.id}">Удалить</button></div></div></div>`).join(''):'<div class="empty"><b>В корзине пусто</b>Добавьте что-нибудь из каталога</div>'}</div>${it.length?`<div class="df"><div class="t"><span>Итого</span><span>${money(total())}</span></div><button class="btn big" data-act="checkout">Оформить заказ</button></div>`:''}`}
+function openP(id){const p=P.find(x=>x.id==id);if(!p)return;cur=p.id;const sp=p.specs.split('|').filter(Boolean).map(s=>{const i=s.indexOf(':');return`<tr><td>${esc(s.slice(0,i))}</td><td>${esc(s.slice(i+1))}</td></tr>`}).join('');const d=disc(p);openM(`<div class="pv"><div><div class="big"><img id="bg" referrerpolicy="no-referrer" src="${esc(U(p.imgs[0],1000))}" alt="${esc(p.title)}" onerror="imgErr(this)"></div><div class="th">${p.imgs.map((a,i)=>`<img class="${i?'':'on'}" data-act="thumb" data-s="${esc(U(a,1000))}" referrerpolicy="no-referrer" src="${esc(U(a,200))}" alt="Фото ${i+1}" onerror="imgErr(this)">`).join('')}</div></div><div class="det"><h3>${esc(p.title)}</h3><div class="rt">${p.rev?`★ ${p.rate} · ${p.rev} отзывов`:'Новый товар'}</div><div class="pr" style="margin-top:8px"><b>${money(p.price)}</b>${d?`<s>${money(p.old)}</s><span class="dis" style="position:static">−${d}%</span>`:''}</div><div class="stk ${p.stock<=20?'lo':''}">${p.stock<=0?'Нет в наличии':p.stock<=20?'Осталось '+p.stock+' шт.':'В наличии'}</div><table>${sp}</table>${p.desc?`<p class="hint" style="margin-bottom:12px">${esc(p.desc)}</p>`:''}<div class="row"><div class="buy" data-buy="${p.id}" style="margin:0;padding:0">${buyBtn(p)}</div>${p.stock>0?`<button class="btn sec" data-act="now" data-id="${p.id}">Купить сейчас</button>`:''}</div><button class="btn sec" style="width:100%;margin-top:10px" data-act="fav" data-id="${p.id}">${fav.includes(p.id)?'♥ В избранном':'♡ В избранное'}</button></div></div>`,'pw')}
+function fp(v){let d=v.replace(/\D/g,'');if(!d)return'';if(d[0]=='8')d='7'+d.slice(1);if(d[0]!='7')d='7'+d;d=d.slice(0,11);let r='+7';if(d.length>1)r+=' ('+d.slice(1,4);if(d.length>4)r+=') '+d.slice(4,7);if(d.length>7)r+='-'+d.slice(7,9);if(d.length>9)r+='-'+d.slice(9,11);return r}
+function openCO(){if(!cart.length)return;closeDr();const u=user||{};openM(`<h3>Оформление заказа</h3><form class="fm" data-form="co"><label>Имя<input name="name" required value="${esc(u.name)}" autocomplete="name"></label><label>Телефон<input name="phone" required inputmode="tel" value="${esc(u.phone)}" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label><label>Email (необязательно)<input name="email" type="email" value="${esc(u.email)}" autocomplete="email"></label><label>Способ получения<select name="ship"><option>Пункт выдачи</option><option>Курьер</option><option>Почта России</option></select></label><label>Адрес или пункт выдачи<input name="addr" required autocomplete="street-address"></label><label>Комментарий<textarea name="note" rows="2"></textarea></label><div class="sum"><span>${cnt()} шт. на сумму</span><b>${money(total())}</b></div><button class="btn big">Заказать</button><p class="hint">Оплата при получении. Стоимость доставки уточнит менеджер по телефону. Онлайн-оплата картой появится позже.</p></form>`)}
+function openUser(){if(!user){openM(`<h3>Вход и регистрация</h3><form class="fm" data-form="reg"><label>Имя<input name="name" required autocomplete="name"></label><label>Телефон<input name="phone" required inputmode="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel"></label><label>Email (необязательно)<input name="email" type="email" autocomplete="email"></label><button class="btn big">Продолжить</button><p class="hint">Данные нужны, чтобы мы могли позвонить по заказу. Они подставятся при оформлении.</p></form>`);return}
+const mine=orders.filter(o=>o.phone==user.phone);openM(`<h3>${esc(user.name)}</h3><p class="hint" style="margin-bottom:14px">${esc(user.phone)}${user.email?' · '+esc(user.email):''}</p><b>Мои заказы</b><div style="margin-top:10px">${mine.length?mine.map(o=>`<div class="ord"><header><span>№ ${o.id}</span><span>${money(o.total)}</span></header><span class="hint">${new Date(o.ts).toLocaleString('ru-RU')} · ${esc(o.status)}</span><div class="hint" style="margin-top:6px">${o.items.map(i=>esc(i.title)+' × '+i.q).join('<br>')}</div></div>`).join(''):'<p class="hint">Заказов пока нет</p>'}</div><button class="btn sec" style="width:100%;margin-top:10px" data-act="logout">Выйти</button>`)}
+function openHelp(){const u=user||{};openM(`<h3>Поддержка</h3><p class="hint" style="margin-bottom:12px">Ответим в рабочее время</p><div class="fm" style="margin-bottom:16px"><a class="btn sec" href="tel:${esc(cfg.phone.replace(/[^\d+]/g,''))}" style="text-decoration:none">Позвонить: ${esc(cfg.phone)}</a><a class="btn sec" href="mailto:${esc(cfg.email)}" style="text-decoration:none">Написать: ${esc(cfg.email)}</a><a class="btn sec" href="https://t.me/${esc(cfg.tg.replace('@',''))}" target="_blank" rel="noopener" style="text-decoration:none">Telegram: @${esc(cfg.tg.replace('@',''))}</a></div><form class="fm" data-form="msg"><b>Или оставьте сообщение</b><label>Имя<input name="name" required value="${esc(u.name)}"></label><label>Телефон или email<input name="contact" required value="${esc(u.phone)}"></label><label>Сообщение<textarea name="text" rows="3" required></textarea></label><button class="btn big">Отправить</button></form>`)}
+function openSeller(){if(seller){panel();return}openM(`<h3>Вход для продавца</h3><form class="fm" data-form="sl"><label>Пароль<input name="pw" type="password" required autocomplete="current-password"></label><button class="btn big">Войти</button><p class="hint">Пароль по умолчанию — crafty2026. Смените его в настройках.</p></form>`)}
+const ST=['Новый','Подтверждён','Отправлен','Выполнен','Отменён'];
+function panel(t){if(t)ptab=t;const tab=(k,n)=>`<button class="pill ${ptab==k?'on':''}" data-act="ptab" data-t="${k}">${n}</button>`;let b='';
+if(ptab=='p')b=`<button class="btn" data-act="newp" style="margin-bottom:10px">+ Добавить товар</button>`+P.map(p=>`<div class="row2"><img referrerpolicy="no-referrer" src="${esc(U(p.imgs[0],200))}" alt="" onerror="imgErr(this)"><div class="g"><b>${esc(p.title)}</b><span>${money(p.price)} · ${p.stock} шт. · ${esc(p.cat)}</span></div><button class="sm" data-act="editp" data-id="${p.id}">Изменить</button><button class="sm d" data-act="delp" data-id="${p.id}">Удалить</button></div>`).join('');
+if(ptab=='o')b=orders.length?orders.map(o=>`<div class="ord"><header><span>№ ${o.id} · ${money(o.total)}</span><select data-st="${o.id}">${ST.map(s=>`<option ${s==o.status?'selected':''}>${s}</option>`).join('')}</select></header><div class="hint">${new Date(o.ts).toLocaleString('ru-RU')}</div><div><b>${esc(o.name)}</b> · <a href="tel:${esc(o.phone)}">${esc(o.phone)}</a>${o.email?' · '+esc(o.email):''}</div><div class="hint">${esc(o.ship)}: ${esc(o.addr)}${o.note?'<br>Комментарий: '+esc(o.note):''}</div><div style="margin-top:6px">${o.items.map(i=>esc(i.title)+' × '+i.q).join('<br>')}</div></div>`).join(''):'<p class="hint">Заказов пока нет</p>';
+if(ptab=='m')b=msgs.length?msgs.map(m=>`<div class="ord"><header><span>${esc(m.name)}</span><span class="hint">${new Date(m.ts).toLocaleString('ru-RU')}</span></header><div class="hint">${esc(m.contact)}</div><div>${esc(m.text)}</div></div>`).join(''):'<p class="hint">Сообщений нет</p>';
+if(ptab=='s')b=`<form class="fm" data-form="cfg"><label>Телефон поддержки<input name="phone" value="${esc(cfg.phone)}"></label><label>Email<input name="email" value="${esc(cfg.email)}"></label><label>Telegram<input name="tg" value="${esc(cfg.tg)}"></label><label>Новый пароль продавца (пусто — не менять)<input name="pass" type="password" autocomplete="new-password"></label><button class="btn">Сохранить</button></form><button class="sm d" style="margin-top:16px" data-act="resetall">Вернуть исходные товары и очистить заказы</button><button class="sm" style="margin-top:16px;margin-left:8px" data-act="out">Выйти</button>`;
+openM(`<h3>Кабинет продавца</h3><div class="tabs">${tab('p','Товары ('+P.length+')')}${tab('o','Заказы ('+orders.length+')')}${tab('m','Сообщения ('+msgs.length+')')}${tab('s','Настройки')}</div>${b}`,'pnl')}
+const pim=()=>fImgs.map((a,i)=>`<div><img referrerpolicy="no-referrer" src="${esc(U(a,200))}" alt="" onerror="imgErr(this)"><button type="button" data-act="rmimg" data-i="${i}" aria-label="Убрать">×</button></div>`).join('')||'<span class="hint">Фото пока нет</span>';
+function pform(id){fId=id||null;const p=id?P.find(x=>x.id==id):{title:'',cat:'',price:'',old:'',stock:1,specs:'',desc:'',badge:'',imgs:[]};fImgs=[...p.imgs];openM(`<h3>${id?'Изменить товар':'Новый товар'}</h3><form class="fm" data-form="pf"><label>Название<input name="title" required value="${esc(p.title)}"></label><label>Категория<input name="cat" required list="cl" value="${esc(p.cat)}"><datalist id="cl">${cats().map(c=>`<option value="${esc(c)}">`).join('')}</datalist></label><div class="two"><label>Цена, ₽<input name="price" type="number" min="1" required value="${p.price}"></label><label>Старая цена, ₽<input name="old" type="number" min="0" value="${p.old||''}"></label></div><div class="two"><label>В наличии, шт.<input name="stock" type="number" min="0" required value="${p.stock}"></label><label>Метка (Новинка, Хит…)<input name="badge" value="${esc(p.badge)}"></label></div><label>Характеристики (каждая с новой строки: Цвет: Белый)<textarea name="specs" rows="3">${esc(p.specs.split('|').filter(Boolean).map(s=>s.replace(':',': ')).join('\n'))}</textarea></label><label>Описание<textarea name="desc" rows="3">${esc(p.desc)}</textarea></label><div class="lbl">Фотографии (первое — главное)</div><div class="pim" id="pimgs">${pim()}</div><div class="two"><input id="iu" placeholder="Ссылка на фото https://…"><button type="button" class="btn sec" data-act="addurl">Добавить по ссылке</button></div><label>Или загрузить файлы<input type="file" id="fi" accept="image/*" multiple></label><button class="btn big">Сохранить</button><button type="button" class="btn sec big" data-act="ptab" data-t="p">Назад к списку</button></form>`)}
+function comp(f){return new Promise(r=>{const fr=new FileReader();fr.onload=()=>{const im=new Image();im.onload=()=>{const s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);r(c.toDataURL('image/jpeg',.8))};im.onerror=()=>r(null);im.src=fr.result};fr.onerror=()=>r(null);fr.readAsDataURL(f)})}
+document.addEventListener('click',e=>{
+if(e.target.id=='ov'){closeM();return}if(e.target.id=='dro'){closeDr();return}
+const a=e.target.closest('[data-act]');if(!a)return;const act=a.dataset.act,id=Number(a.dataset.id);
+if(act=='fav'||act=='add'||act=='inc'||act=='dec'||act=='del'||act=='open'||act=='now'||act=='thumb'||act=='slide'||act=='cat'||act=='gocat'||act=='home')e.preventDefault();
+switch(act){
+case'open':closeDr();openP(id);break;
+case'add':setQ(id,1);toast('Добавлено в корзину');break;
+case'inc':setQ(id,qty(id)+1);break;
+case'dec':setQ(id,qty(id)-1);break;
+case'del':setQ(id,0);break;
+case'fav':{e.stopPropagation();const i=fav.indexOf(id);if(i<0)fav.push(id);else fav.splice(i,1);SV('crafty_fav',fav);badges();if(F.fav)renderGrid();else{document.querySelectorAll(`.fav[data-id="${id}"]`).forEach(b=>b.classList.toggle('on',fav.includes(id)))}if(a.classList.contains('btn'))a.textContent=fav.includes(id)?'♥ В избранном':'♡ В избранное';break}
+case'now':setQ(id,Math.max(1,qty(id)));closeM();openCO();break;
+case'thumb':$('#bg').src=a.dataset.s;document.querySelectorAll('.th img').forEach(i=>i.classList.toggle('on',i==a));break;
+case'close':closeM();break;
+case'closedr':closeDr();break;
+case'cart':closeM();openDr();break;
+case'checkout':openCO();break;
+case'slide':clearInterval(ht);slide(Number(a.dataset.i));break;
+case'cat':F.cat=a.dataset.c;F.fav=false;renderGrid();break;
+case'gocat':if(a.dataset.c){F.cat=a.dataset.c;F.fav=false;renderGrid()}$('#catalog').scrollIntoView({behavior:'smooth'});break;
+case'favs':F.fav=!F.fav||!a.classList.contains('pill')&&true;if(a.classList.contains('pill'))F.fav=!F.fav?false:true;F.cat='Все';renderGrid();$('#catalog').scrollIntoView({behavior:'smooth'});break;
+case'home':F={cat:'Все',q:'',sort:'pop',min:0,max:0,stock:false,fav:false};$('#q').value='';$('#sort').value='pop';$('#mn').value='';$('#mx').value='';$('#sk').checked=false;renderGrid();scrollTo({top:0,behavior:'smooth'});break;
+case'reset':F={cat:'Все',q:'',sort:'pop',min:0,max:0,stock:false,fav:false};$('#q').value='';$('#mn').value='';$('#mx').value='';$('#sk').checked=false;renderGrid();break;
+case'user':closeDr();openUser();break;
+case'logout':user=null;SV('crafty_user',null);badges();closeM();toast('Вы вышли');break;
+case'help':closeDr();openHelp();break;
+case'seller':openSeller();break;
+case'out':seller=false;closeM();break;
+case'ptab':panel(a.dataset.t);break;
+case'newp':pform();break;
+case'editp':pform(id);break;
+case'delp':if(confirm('Удалить товар?')){P=P.filter(p=>p.id!=id);cart=cart.filter(c=>c.id!=id);fav=fav.filter(f=>f!=id);SV('crafty_products',P);SV('crafty_cart',cart);SV('crafty_fav',fav);renderAll();panel('p')}break;
+case'rmimg':fImgs.splice(Number(a.dataset.i),1);$('#pimgs').innerHTML=pim();break;
+case'addurl':{const v=$('#iu').value.trim();if(!/^https?:\/\//.test(v)){toast('Вставьте ссылку, начинающуюся с https://');break}fImgs.push(v);$('#iu').value='';$('#pimgs').innerHTML=pim();break}
+case'resetall':if(confirm('Вернуть исходные 16 товаров и удалить все заказы и сообщения?')){P=seed();orders=[];msgs=[];cart=[];SV('crafty_products',P);SV('crafty_orders',orders);SV('crafty_msgs',msgs);SV('crafty_cart',cart);renderAll();panel('s');toast('Готово')}break;
+}});
+document.addEventListener('input',e=>{const t=e.target;if(t.name=='phone'){t.value=fp(t.value);return}
+if(t.id=='q'){F.q=t.value.trim();renderGrid()}
+if(t.id=='mn'){F.min=Number(t.value)||0;renderGrid()}
+if(t.id=='mx'){F.max=Number(t.value)||0;renderGrid()}});
+document.addEventListener('change',async e=>{const t=e.target;
+if(t.id=='sort'){F.sort=t.value;renderGrid()}
+if(t.id=='sk'){F.stock=t.checked;renderGrid()}
+if(t.dataset.st){const o=orders.find(x=>x.id==t.dataset.st);if(o){o.status=t.value;SV('crafty_orders',orders);toast('Статус обновлён')}}
+if(t.id=='fi'){const fs=[...t.files];toast('Загружаем фото…');for(const f of fs){const d=await comp(f);if(d)fImgs.push(d)}t.value='';$('#pimgs').innerHTML=pim()}});
+document.addEventListener('submit',e=>{const f=e.target,k=f.dataset.form;if(!k)return;e.preventDefault();const d=Object.fromEntries(new FormData(f));
+if(k=='reg'||k=='co'){const ph=fp(d.phone||'');if(ph.replace(/\D/g,'').length<11){toast('Введите номер телефона полностью');return}d.phone=ph}
+if(k=='reg'){user={name:d.name.trim(),phone:d.phone,email:d.email||''};SV('crafty_user',user);badges();toast('Добро пожаловать!');openUser()}
+if(k=='co'){const items=cart.map(c=>{const p=P.find(x=>x.id==c.id);return p?{id:p.id,title:p.title,price:p.price,q:c.q}:null}).filter(Boolean);if(!items.length)return;const o={id:'CR-'+Date.now().toString().slice(-6),ts:Date.now(),items,total:total(),name:d.name.trim(),phone:d.phone,email:d.email||'',ship:d.ship,addr:d.addr.trim(),note:d.note||'',status:'Новый'};orders.unshift(o);items.forEach(i=>{const p=P.find(x=>x.id==i.id);if(p)p.stock=Math.max(0,p.stock-i.q)});cart=[];user={name:o.name,phone:o.phone,email:o.email};SV('crafty_orders',orders);SV('crafty_products',P);SV('crafty_cart',cart);SV('crafty_user',user);renderAll();openM(`<div class="ok"><div class="c">✓</div><h3 style="padding:0">Заказ № ${o.id} принят</h3><p class="hint" style="margin:8px 0 18px">Мы позвоним на ${esc(o.phone)}, чтобы подтвердить заказ и уточнить доставку. Сумма: ${money(o.total)}.</p><button class="btn big" data-act="close">Продолжить покупки</button></div>`)}
+if(k=='msg'){msgs.unshift({ts:Date.now(),name:d.name,contact:d.contact,text:d.text});SV('crafty_msgs',msgs);openM('<div class="ok"><div class="c">✓</div><h3 style="padding:0">Сообщение отправлено</h3><p class="hint" style="margin:8px 0 18px">Ответим как можно скорее.</p><button class="btn big" data-act="close">Хорошо</button></div>')}
+if(k=='sl'){if(d.pw===cfg.pass){seller=true;panel('p')}else toast('Неверный пароль')}
+if(k=='cfg'){cfg.phone=d.phone;cfg.email=d.email;cfg.tg=d.tg;if(d.pass)cfg.pass=d.pass;SV('crafty_cfg',cfg);toast('Сохранено')}
+if(k=='pf'){if(!fImgs.length){toast('Добавьте хотя бы одно фото');return}const specs=(d.specs||'').split('\n').map(s=>s.trim()).filter(s=>s.includes(':')).map(s=>{const i=s.indexOf(':');return s.slice(0,i).trim()+':'+s.slice(i+1).trim()}).join('|');const o={title:d.title.trim(),cat:d.cat.trim(),price:Number(d.price),old:Number(d.old)||0,stock:Number(d.stock),badge:(d.badge||'').trim(),specs,desc:(d.desc||'').trim(),imgs:[...fImgs]};if(fId)Object.assign(P.find(x=>x.id==fId),o);else P.unshift(Object.assign({id:Date.now(),rate:0,rev:0},o));if(SV('crafty_products',P)){renderAll();toast('Товар сохранён');panel('p')}}
+});
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){closeM();closeDr()}});
+renderAll();
+</script>
+</body>
+</html>
